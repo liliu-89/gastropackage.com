@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Gastro Package GmbH</title>
+  <meta name="description" content="Gastro Package GmbH">
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+
+  <!-- Consent Mode DEFAULT (before GTM) -->
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){ dataLayer.push(arguments); }
+
+    gtag('consent', 'default', {
+      ad_storage: 'denied',
+      analytics_storage: 'denied',
+      ad_user_data: 'denied',
+      ad_personalization: 'denied',
+      wait_for_update: 500
+    });
+  </script>
+
+  <!-- Google Tag Manager -->
+  <script>
+    (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+      new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+      j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+      'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-WG78ZSBS');
+  </script>
+</head>
+
+<body class="bg-light">
+  <!-- GTM (noscript) -->
+  <noscript>
+    <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WG78ZSBS"
+            height="0" width="0" style="display:none;visibility:hidden"></iframe>
+  </noscript>
+
+  <div class="container">
+    <header class="d-flex flex-wrap justify-content-center py-3 mb-4 border-bottom">
+      <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-body-emphasis text-decoration-none">
+        <span class="fs-4">Gastro Package GmbH</span>
+      </a>
+      <ul class="nav nav-pills">
+        <li class="nav-item"><a href="#" class="nav-link">Produkte</a></li>
+        <li class="nav-item"><a href="#" class="nav-link">Über uns</a></li>
+      </ul>
+    </header>
+  </div>
+
+  <div class="container py-5">
+    <p class="mb-3">Unsere Internetpräsenz wird gerade aktualisiert, bitte schauen Sie bald wieder vorbei.</p>
+
+    <div class="container">
+      <footer class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top">
+        <p class="col-md-3 mb-0 text-body-secondary">© <span id="year"></span> Gastro Package GmbH.</p>
+        <ul class="nav col-md-5 justify-content-end">
+          <li class="nav-item"><a href="/impressum" class="nav-link px-2 text-body-secondary"><button class="btn btn-link p-0">Impressum</button></a></li>
+          <li class="nav-item"><a href="/datenschutz" class="nav-link px-2 text-body-secondary"><button class="btn btn-link p-0">Datenschutzerklärung</button></a></li>
+          <li class="nav-item"><span class="nav-link px-2 text-body-secondary"><button class="btn btn-link p-0" onclick="openConsentBanner()">Cookie-Einstellungen</button></span></li>
+        </ul>
+      </footer>
+    </div>
+  </div>
+
+  <!-- Consent-Banner -->
+  <div id="consent-placeholder"></div>
+
+  <!-- Script zum Laden -->
+  <script>
+        fetch("/includes/consent-banner.html")
+            .then(response => response.text())
+            .then(html => {
+            document.getElementById("consent-placeholder").innerHTML = html;
+            // Wichtig: Banner-Skript danach initialisieren
+            const script = document.createElement("script");
+            script.src = "/js/consent-banner.js";
+            document.body.appendChild(script);
+            })
+            .catch(err => console.error("Consent include konnte nicht geladen werden:", err));
+  </script>
+
+  <script>document.getElementById('year').textContent = new Date().getFullYear()</script>
+</body>
+</html>
